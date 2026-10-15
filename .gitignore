@@ -1,0 +1,31 @@
+# Raw inputs and generated parquet — never committed
+data/raw/**
+!data/raw/sensortower/
+!data/raw/genesis/
+!data/raw/_duplicates/
+!data/raw/**/.gitkeep
+# Raw Google Sheet exports (internal notes, data-room links); registry.csv is the committed form
+data/catalog/03 Competitors*.csv
+data/catalog/cache/
+data/processed/**
+!data/processed/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+
+# Node / Next
+web/node_modules/
+web/.next/
+web/out/
+web/next-env.d.ts
+*.tsbuildinfo
+
+# Env / OS
+.env
+.env.*
+.DS_Store
+Thumbs.db

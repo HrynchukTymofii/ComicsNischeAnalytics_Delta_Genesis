@@ -1,0 +1,434 @@
+{
+ "generated_at": "2026-10-15T17:50:51+00:00",
+ "raw_files_scanned": 27,
+ "byte_identical_duplicates": 0,
+ "excluded": [
+  {
+   "file": "Unified_Downloads_Feb_23,_2023_Mar_4,_2023,_All_112_Countries_Regions.csv",
+   "reason": "Wrong export: knock-off app 'MangaFox - Viz Manga comic' (com.app.promoteapp), 10 days in 2023, $0 revenue"
+  }
+ ],
+ "files_used": [
+  {
+   "file": "DramaBox_daily_US_2026-09-13_2026-09-30.xlsx",
+   "apps": [
+    "DramaBox – Stream Drama Shorts"
+   ],
+   "countries": 1,
+   "us_snapshot": true,
+   "granularity": [
+    {
+     "granularity": "daily",
+     "start": "2026-09-13",
+     "end": "2026-09-30"
+    }
+   ],
+   "rows": 108
+  },
+  {
+   "file": "DramaBox_monthly_WW110_2023-04-01_2026-09-01.csv",
+   "apps": [
+    "DramaBox – Stream Drama Shorts"
+   ],
+   "countries": 110,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2023-04-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 12563
+  },
+  {
+   "file": "GlobalComix_monthly_WW111_2023-09-01_2026-09-01.csv",
+   "apps": [
+    "GlobalComix"
+   ],
+   "countries": 111,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2023-09-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 9928
+  },
+  {
+   "file": "K-MANGA_monthly_WW84_2023-05-01_2026-09-01.csv",
+   "apps": [
+    "K MANGA"
+   ],
+   "countries": 84,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2023-05-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 2765
+  },
+  {
+   "file": "Lezhin-Comics-Premium-Webtoons_daily_US_2026-09-13_2026-09-30.xlsx",
+   "apps": [
+    "Lezhin Comics – Premium Webtoons"
+   ],
+   "countries": 1,
+   "us_snapshot": true,
+   "granularity": [
+    {
+     "granularity": "daily",
+     "start": "2026-09-13",
+     "end": "2026-09-30"
+    }
+   ],
+   "rows": 108
+  },
+  {
+   "file": "Lezhin-Comics-Premium-Webtoons_monthly_WW112_2019-01-01_2026-09-01.csv",
+   "apps": [
+    "Lezhin Comics – Premium Webtoons"
+   ],
+   "countries": 112,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 38458
+  },
+  {
+   "file": "MANGA-Plus-by-SHUEISHA_monthly_WW110_2019-01-01_2026-09-01.csv",
+   "apps": [
+    "MANGA Plus by SHUEISHA"
+   ],
+   "countries": 110,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 25611
+  },
+  {
+   "file": "Manga-UP_monthly_WW112_2019-01-01_2026-09-01.csv",
+   "apps": [
+    "Manga UP!"
+   ],
+   "countries": 112,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 13371
+  },
+  {
+   "file": "Manta_daily_US_2026-09-13_2026-09-30.xlsx",
+   "apps": [
+    "Manta – Manga, Manhwa, Novels"
+   ],
+   "countries": 1,
+   "us_snapshot": true,
+   "granularity": [
+    {
+     "granularity": "daily",
+     "start": "2026-09-13",
+     "end": "2026-09-30"
+    }
+   ],
+   "rows": 54
+  },
+  {
+   "file": "Manta_monthly_WW112_2020-11-01_2026-09-01.csv",
+   "apps": [
+    "Manta – Manga, Manhwa, Novels"
+   ],
+   "countries": 112,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2020-11-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 20871
+  },
+  {
+   "file": "MoboDrama_weekly_WW111_2026-03-23_2026-09-28.csv",
+   "apps": [
+    "MoboDrama"
+   ],
+   "countries": 111,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "weekly",
+     "start": "2026-03-23",
+     "end": "2026-09-28"
+    }
+   ],
+   "rows": 3097
+  },
+  {
+   "file": "POCKET-COMICS_monthly_WW110_2020-07-01_2025-07-01.csv",
+   "apps": [
+    "Pocket Comics"
+   ],
+   "countries": 110,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2020-07-01",
+     "end": "2025-07-01"
+    }
+   ],
+   "rows": 13079
+  },
+  {
+   "file": "ReelShort_daily_US_2026-09-13_2026-09-30.xlsx",
+   "apps": [
+    "ReelShort – Stream Drama & TV"
+   ],
+   "countries": 1,
+   "us_snapshot": true,
+   "granularity": [
+    {
+     "granularity": "daily",
+     "start": "2026-09-13",
+     "end": "2026-09-30"
+    }
+   ],
+   "rows": 54
+  },
+  {
+   "file": "ReelShort_monthly_WW111_2022-08-01_2026-09-01.csv",
+   "apps": [
+    "ReelShort – Stream Drama & TV"
+   ],
+   "countries": 111,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2022-08-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 14130
+  },
+  {
+   "file": "Shonen-Jump-Manga-Comics_monthly_WW39_2019-01-01_2026-09-01.csv",
+   "apps": [
+    "Shonen Jump"
+   ],
+   "countries": 39,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 3031
+  },
+  {
+   "file": "Tapas_daily_US_2026-09-13_2026-09-30.xlsx",
+   "apps": [
+    "Tapas – Comics and Novels"
+   ],
+   "countries": 1,
+   "us_snapshot": true,
+   "granularity": [
+    {
+     "granularity": "daily",
+     "start": "2026-09-13",
+     "end": "2026-09-30"
+    }
+   ],
+   "rows": 54
+  },
+  {
+   "file": "Tapas_monthly_WW112_2019-01-01_2026-09-01.csv",
+   "apps": [
+    "Tapas – Comics and Novels"
+   ],
+   "countries": 112,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 26556
+  },
+  {
+   "file": "Tappytoon-Manhwa-Novels_daily_US_2026-09-13_2026-09-30.xlsx",
+   "apps": [
+    "Tappytoon Manhwa & Novels"
+   ],
+   "countries": 1,
+   "us_snapshot": true,
+   "granularity": [
+    {
+     "granularity": "daily",
+     "start": "2026-09-13",
+     "end": "2026-09-30"
+    }
+   ],
+   "rows": 54
+  },
+  {
+   "file": "Toomics_monthly_WW112_2019-01-01_2026-09-01.csv",
+   "apps": [
+    "Toomics"
+   ],
+   "countries": 112,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 38305
+  },
+  {
+   "file": "WEBTOON_daily_US_2026-09-13_2026-09-30.xlsx",
+   "apps": [
+    "WEBTOON: Manga, Comics, Manhwa"
+   ],
+   "countries": 1,
+   "us_snapshot": true,
+   "granularity": [
+    {
+     "granularity": "daily",
+     "start": "2026-09-13",
+     "end": "2026-09-30"
+    }
+   ],
+   "rows": 54
+  },
+  {
+   "file": "WEBTOON_monthly+weekly_WW110_2015-01-01_2026-09-28.csv",
+   "apps": [
+    "WEBTOON: Manga, Comics, Manhwa"
+   ],
+   "countries": 110,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2015-01-01",
+     "end": "2025-12-01"
+    },
+    {
+     "granularity": "weekly",
+     "start": "2025-12-29",
+     "end": "2026-09-28"
+    }
+   ],
+   "rows": 50612
+  },
+  {
+   "file": "Wattpad_daily_US_2026-09-13_2026-09-30.xlsx",
+   "apps": [
+    "Wattpad – Read & Write Stories"
+   ],
+   "countries": 1,
+   "us_snapshot": true,
+   "granularity": [
+    {
+     "granularity": "daily",
+     "start": "2026-09-13",
+     "end": "2026-09-30"
+    }
+   ],
+   "rows": 72
+  },
+  {
+   "file": "Wattpad_monthly_WW112_2019-01-01_2026-09-01.csv",
+   "apps": [
+    "Wattpad – Read & Write Stories"
+   ],
+   "countries": 112,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 34815
+  },
+  {
+   "file": "WebComics_monthly_WW111_2019-01-01_2026-09-01.csv",
+   "apps": [
+    "WebComics"
+   ],
+   "countries": 111,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 25379
+  },
+  {
+   "file": "WebNovel_daily_US_2026-09-13_2026-09-30.xlsx",
+   "apps": [
+    "WebNovel"
+   ],
+   "countries": 1,
+   "us_snapshot": true,
+   "granularity": [
+    {
+     "granularity": "daily",
+     "start": "2026-09-13",
+     "end": "2026-09-30"
+    }
+   ],
+   "rows": 54
+  },
+  {
+   "file": "WebNovel_monthly_WW111_2019-01-01_2026-09-01.csv",
+   "apps": [
+    "WebNovel"
+   ],
+   "countries": 111,
+   "us_snapshot": false,
+   "granularity": [
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01"
+    }
+   ],
+   "rows": 26706
+  }
+ ]
+}

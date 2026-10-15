@@ -1,0 +1,17 @@
+{
+  "sensortower": {
+    "revenue_basis": "net",
+    "_comment": "Sensor Tower revenue is always NET (after Apple/Google fees). Do not change."
+  },
+  "genesis": {
+    "revenue_basis": null,
+    "_comment": "Set to \"net\" or \"gross\" once confirmed. build-data refuses to load Genesis revenue while this is null."
+  },
+  "exclude_files": [
+    {
+      "md5": "7d94e10e38d4eadfc7375cb1b592dae4",
+      "original_name": "Unified_Downloads_Feb_23,_2023_Mar_4,_2023,_All_112_Countries_Regions.csv",
+      "reason": "Wrong export: knock-off app 'MangaFox - Viz Manga comic' (com.app.promoteapp), 10 days in 2023, $0 revenue"
+    }
+  ]
+}

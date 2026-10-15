@@ -1,0 +1,9 @@
+{
+  "_comment": "Regions for the World/US/Tier-1 switch. 'world' = every country in the export. Edit the lists, then run `make build-data`.",
+  "world": { "label": "World (sum of all countries in the export, up to 112)", "countries": null },
+  "us": { "label": "United States", "countries": ["US"] },
+  "tier1": {
+    "label": "Tier-1 countries (US, CA, GB, AU, NZ, IE, DE, FR, NL, BE, AT, CH, LU, SE, NO, DK, FI, JP, KR, SG)",
+    "countries": ["US", "CA", "GB", "AU", "NZ", "IE", "DE", "FR", "NL", "BE", "AT", "CH", "LU", "SE", "NO", "DK", "FI", "JP", "KR", "SG"]
+  }
+}
