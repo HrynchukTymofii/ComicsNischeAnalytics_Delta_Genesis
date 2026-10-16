@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useControls } from "@/lib/controls";
-import { CORE_SEGMENTS, DEFAULT_SEGMENTS, SEGMENT_LABEL, TIER1_NOTE, VIDEO_SEGMENTS } from "@/lib/labels";
+import { CORE_SEGMENTS, DEFAULT_SEGMENTS, SEGMENT_LABEL, TIER1_NOTE } from "@/lib/labels";
 import type { Segment } from "@/lib/types";
 import { segmentColor } from "./ui";
 
@@ -39,15 +39,11 @@ function Toggle<T extends string>({ value, options, onChange, label }: {
 export function Nav() {
   const path = usePathname();
   const { basis, setBasis, region, setRegion, segments, setSegments } = useControls();
-  const video = VIDEO_SEGMENTS.every((s) => segments.includes(s));
-  const nonVideo = segments.filter((s) => !VIDEO_SEGMENTS.includes(s));
-  const isCore = nonVideo.length === CORE_SEGMENTS.length && CORE_SEGMENTS.every((s) => nonVideo.includes(s));
-  const isAll = nonVideo.length === DEFAULT_SEGMENTS.length;
-  const withVideo = (base: Segment[], on: boolean) => (on ? [...base, ...VIDEO_SEGMENTS] : base);
-  const setVideo = (on: boolean) => setSegments(withVideo(nonVideo.length ? nonVideo : DEFAULT_SEGMENTS, on));
+  const isCore = segments.length === CORE_SEGMENTS.length && CORE_SEGMENTS.every((s) => segments.includes(s));
+  const isAll = segments.length === DEFAULT_SEGMENTS.length;
   const toggleSeg = (s: Segment) =>
     setSegments(segments.includes(s)
-      ? (nonVideo.length > 1 ? segments.filter((x) => x !== s) : segments)
+      ? (segments.length > 1 ? segments.filter((x) => x !== s) : segments)
       : [...segments, s]);
 
   return (
@@ -78,14 +74,12 @@ export function Nav() {
           <Toggle label="Регіон" value={region} onChange={setRegion}
             options={[{ value: "world", label: "Світ" }, { value: "us", label: "США" }, { value: "tier1", label: "Tier-1" }]} />
           {region === "tier1" && <span className="text-xs text-muted" title={TIER1_NOTE}>20 країн ⓘ</span>}
-          <Toggle label="Відео-формати (short drama, AI comic drama)" value={video ? "on" : "off"} onChange={(v) => setVideo(v === "on")}
-            options={[{ value: "off", label: "Без відео" }, { value: "on", label: "З відео (short drama)" }]} />
           <div className="flex flex-wrap items-center gap-1 text-xs">
-            <button type="button" onClick={() => setSegments(withVideo(DEFAULT_SEGMENTS, video))} aria-pressed={isAll}
+            <button type="button" onClick={() => setSegments(DEFAULT_SEGMENTS)} aria-pressed={isAll}
               className={`rounded-md border border-hairline px-2 py-1 ${isAll ? "bg-ink text-page" : "bg-surface text-ink-2"}`}>
               Усі сегменти
             </button>
-            <button type="button" onClick={() => setSegments(withVideo(CORE_SEGMENTS, video))} aria-pressed={isCore}
+            <button type="button" onClick={() => setSegments(CORE_SEGMENTS)} aria-pressed={isCore}
               className={`rounded-md border border-hairline px-2 py-1 ${isCore ? "bg-ink text-page" : "bg-surface text-ink-2"}`}>
               Лише комікси
             </button>

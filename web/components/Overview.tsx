@@ -110,7 +110,7 @@ export function Overview({ catalog, monthly, countries }: { catalog: Catalog; mo
         <h1 className="text-2xl font-semibold">Огляд ринку</h1>
         <p className="text-sm text-ink-2">
           Sensor Tower, {d.apps.length} застосунків у вибраних сегментах. «Світ» = сума країн в експорті (до 112).
-          {!segments.includes("short_drama") && " Відео-формати (short drama, AI comic drama) не враховано."}
+          {" Відео-формати (short drama, AI comic drama) не враховано."}
         </p>
       </div>
 

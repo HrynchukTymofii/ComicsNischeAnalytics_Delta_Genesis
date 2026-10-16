@@ -28,7 +28,9 @@ export function ControlsProvider({ children }: { children: ReactNode }) {
       const saved = JSON.parse(localStorage.getItem(KEY) ?? "null");
       if (saved?.basis) setBasis(saved.basis);
       if (saved?.region) setRegion(saved.region);
-      if (Array.isArray(saved?.segments) && saved.segments.length) setSegments(saved.segments);
+      // Video formats are no longer selectable: drop them from segments saved by older versions.
+      const segs = Array.isArray(saved?.segments) ? saved.segments.filter((s: Segment) => DEFAULT_SEGMENTS.includes(s)) : [];
+      if (segs.length) setSegments(segs);
     } catch {
       /* storage unavailable: defaults */
     }

@@ -33,7 +33,7 @@ export const SEGMENT_ORDER: Segment[] = [
   "webtoon_platform", "manga", "western_comics", "webnovel", "short_drama", "ai_comic_drama", "piracy",
 ];
 export const CORE_SEGMENTS: Segment[] = ["webtoon_platform", "manga", "western_comics"];
-/** Video formats (not image comics). Excluded by default; switched on with the «Відео-формати» toggle. */
+/** Video formats (not image comics). Always excluded from the dashboards; the data stays in the catalog and app pages. */
 export const VIDEO_SEGMENTS: Segment[] = ["short_drama", "ai_comic_drama"];
 export const DEFAULT_SEGMENTS: Segment[] = SEGMENT_ORDER.filter((s) => !VIDEO_SEGMENTS.includes(s));
 

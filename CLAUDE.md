@@ -62,8 +62,9 @@ Commands: `make registry`, `make audit`, `make catalog`, `make build-data` (runs
   a renamed header raises `LayoutError` instead of silently shifting columns.
 
 - **Video formats are excluded by default** (user decision 2026-10-15): short_drama (ReelShort, DramaBox)
-  and ai_comic_drama (MoboDrama) are video, not image comics, and dwarf the comics numbers. The UI has a
-  «Відео-формати» toggle (off by default); MCP `total_market(include_video=False)`.
+  and ai_comic_drama (MoboDrama) are video, not image comics, and dwarf the comics numbers. The «Відео-формати»
+  toggle was removed (user decision 2026-10-16): dashboards never include them, but the data is kept (catalog,
+  app pages); MCP `total_market(include_video=False)`.
 
 - Sensor Tower "Revenue" and "Downloads" exports are the same file (both metrics in each).
 - US daily files 13–30.09.2026 are a separate `us_snapshot` (run-rate = sum × 365/18), never in monthly.
