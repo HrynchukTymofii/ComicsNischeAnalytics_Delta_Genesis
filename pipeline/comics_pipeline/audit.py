@@ -16,7 +16,7 @@ from pathlib import Path
 import pandas as pd
 
 from .paths import Paths
-from .st_io import RAW_SUFFIXES, detect_granularity, granularity_runs, read_st
+from .st_io import RAW_SUFFIXES, detect_granularity, granularity_runs, is_st_export, read_st
 
 
 def md5(path: Path) -> str:
@@ -27,12 +27,24 @@ def md5(path: Path) -> str:
     return h.hexdigest()
 
 
-def raw_files(paths: Paths) -> list[tuple[str, Path]]:
+def _all_raw(paths: Paths) -> list[tuple[str, Path]]:
     out = []
     for source, folder in paths.raw_sources.items():
         if folder.exists():
             out += [(source, p) for p in sorted(folder.rglob("*")) if p.is_file() and p.suffix.lower() in RAW_SUFFIXES]
     return out
+
+
+def raw_files(paths: Paths) -> list[tuple[str, Path]]:
+    """Sensor Tower exports only (sniffed by header). Other files are listed by `other_raw_files`."""
+    return [(s, p) for s, p in _all_raw(paths) if is_st_export(p)]
+
+
+def other_raw_files(paths: Paths) -> list[Path]:
+    """Raw files that are not Sensor Tower exports (AppKittie, reviews, .docx, free-services workbook)."""
+    st = {p for _, p in raw_files(paths)}
+    return [p for folder in paths.raw_sources.values() if folder.exists()
+            for p in sorted(folder.rglob("*")) if p.is_file() and p.name != ".gitkeep" and p not in st]
 
 
 def find_duplicate_groups(files: list[tuple[str, Path]]) -> list[list[Path]]:
@@ -156,7 +168,8 @@ def _md_table(df: pd.DataFrame, cols: list[str]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def write_markdown(paths: Paths, report: pd.DataFrame, dup_groups: list[list[str]], overlaps: pd.DataFrame) -> Path:
+def write_markdown(paths: Paths, report: pd.DataFrame, dup_groups: list[list[str]], overlaps: pd.DataFrame,
+                   others: list[Path] | None = None) -> Path:
     ok = report[report["error"].isna()] if "error" in report else report
     dup_paths = {p for g in dup_groups for p in g[1:]}
     keep = ok[~ok["path"].isin(dup_paths)].copy()
@@ -178,6 +191,9 @@ def write_markdown(paths: Paths, report: pd.DataFrame, dup_groups: list[list[str
     suspicious = keep[keep["zero_revenue"]]
     if len(suspicious):
         md += ["## Suspicious: zero revenue in every row\n", _md_table(suspicious, ["file", "unified_names", "app_ids", "rows"])]
+    if others:
+        md += ["## Other sources (not Sensor Tower — read by `make intel`, not by this audit)\n",
+               "".join(f"- `{p.relative_to(paths.root).as_posix()}`\n" for p in others)]
     md += ["## Exact duplicates (same MD5)\n"]
     for g in dup_groups:
         md.append(f"- keep `{g[0]}`\n" + "".join(f"  - duplicate `{p}`\n" for p in g[1:]))
@@ -263,7 +279,7 @@ def run(paths: Paths, *, move: bool = False, confirmed: bool = False, apply: boo
     report.to_csv(paths.data / "audit_report.csv", index=False, encoding="utf-8")
     if len(overlaps):
         overlaps.to_csv(paths.data / "audit_overlaps.csv", index=False, encoding="utf-8")
-    md = write_markdown(paths, report, dup_groups, overlaps)
+    md = write_markdown(paths, report, dup_groups, overlaps, other_raw_files(paths))
     print(f"\n{len(report)} files · {len(dup_groups)} duplicate groups · {len(overlaps)} overlaps")
     print(f"Report: data/audit_report.csv, {md.relative_to(paths.root).as_posix()}")
 

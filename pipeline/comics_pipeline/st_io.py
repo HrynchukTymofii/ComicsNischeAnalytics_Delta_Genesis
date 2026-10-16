@@ -23,6 +23,27 @@ def _id_to_str(v) -> str:
     return str(v).strip()
 
 
+def is_st_export(path: Path) -> bool:
+    """Cheap header sniff: does the file look like a Sensor Tower export (has a "Unified ID" column)?
+
+    data/raw/genesis also holds other sources (AppKittie, Google Play reviews, a free-services
+    workbook); those are read by `comics_pipeline.sources`, never by the Sensor Tower path.
+    """
+    if path.suffix.lower() == ".xlsx":
+        from openpyxl import load_workbook
+
+        try:
+            wb = load_workbook(path, read_only=True)
+            first = next(wb.worksheets[0].iter_rows(max_row=1, values_only=True), ())
+            wb.close()
+        except Exception:  # noqa: BLE001 — unreadable workbook: let read_st report it
+            return True
+        return "Unified ID" in [str(c).strip() for c in first if c is not None]
+    head = path.open("rb").read(4096)
+    text = head.decode("utf-16", errors="ignore") if head[:2] in (b"\xff\xfe", b"\xfe\xff") else head.decode("utf-8", errors="ignore")
+    return "Unified ID" in text.splitlines()[0] if text else False
+
+
 def read_st(path: Path) -> tuple[pd.DataFrame, str]:
     """Return (frame, format_label). Raises ValueError if no reader yields the expected columns."""
     attempts: list[tuple[str, dict]] = []

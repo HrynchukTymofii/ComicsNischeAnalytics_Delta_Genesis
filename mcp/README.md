@@ -16,6 +16,13 @@ pass `basis="gross"` to add the estimated gross range (net/0.85 … net/0.70).
 | `top_countries(app, metric, period, limit)` | top countries (world data) |
 | `growth_table(region)` | every app: L12M vs previous 12 months, status |
 | `us_snapshot_ranking()` | US run-rate ranking from the 13–30.09.2026 daily snapshot |
+| `app_intel(app)` | other sources for one app: AppKittie/AppMagic estimates, monetization & IAP prices, store pages, web traffic, Trends, deals, SEC |
+| `reviews(app, stars?, topic?, sort, limit)` | Google Play (US) review sample: stats, keyword topics, texts |
+| `ads(app)` | ad creatives (AppKittie), Meta Ad Library counts, hooks |
+| `market_signals(section?)` | Google Trends, App Store keywords, Meta Ad Library, Similarweb, AppMagic, deals, WEBTOON SEC, gaps |
+
+The last four read `data/processed/intel.json` (`make intel`). They are snapshots from other sources, never Sensor Tower,
+and say so in every response.
 
 `app` accepts a slug (`webtoon`) or a name (`Shonen Jump`). `period`: `l12m`, `all`, `2025`, `2026-09`, `2025-01..2026-09`.
 

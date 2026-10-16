@@ -1,4 +1,4 @@
-# Raw data audit — 2026-10-15 17:01 UTC
+# Raw data audit — 2026-10-16 07:34 UTC
 
 Files: 27 · readable: 27 · errors: 0 · byte-identical duplicate groups: 0 (0 redundant files)
 
@@ -41,6 +41,27 @@ Revenue below is Sensor Tower **net** USD, summed over every row in the file (al
 | file | unified_names | app_ids | rows |
 |---|---|---|---|
 | MangaFox_daily_WW61_2023-02-23_2023-03-04.csv | MangaFox - Viz Manga comic | com.app.promoteapp | 374 |
+
+## Other sources (not Sensor Tower — read by `make intel`, not by this audit)
+
+- `data/raw/genesis/02_AppKittie/2.1 Пошук застосунків/AK_пошук_comics_світ_14.10.csv`
+- `data/raw/genesis/02_AppKittie/2.1 Пошук застосунків/AK_пошук_manga_світ_14.10.csv`
+- `data/raw/genesis/02_AppKittie/2.2 Картки застосунків/AK_картка_MoboDrama_iOS_14.10.docx`
+- `data/raw/genesis/02_AppKittie/2.2 Картки застосунків/AK_картка_ShonenJump_iOS_14.10.docx`
+- `data/raw/genesis/02_AppKittie/2.2 Картки застосунків/AK_картка_Tappytoon_GooglePlay_14.10.docx`
+- `data/raw/genesis/02_AppKittie/2.3 Реклама (Meta, Google)/AK_реклама_Manta_Meta-Google_14.10.csv`
+- `data/raw/genesis/02_AppKittie/2.3 Реклама (Meta, Google)/AK_реклама_Manta_скріни-креативів_14.10.docx`
+- `data/raw/genesis/02_AppKittie/2.3 Реклама (Meta, Google)/AK_реклама_ShonenJump_Meta-Google_14.10.csv`
+- `data/raw/genesis/02_AppKittie/2.3 Реклама (Meta, Google)/AK_реклама_ShonenJump_скріни-креативів_14.10.docx`
+- `data/raw/genesis/02_AppKittie/2.4 Ключові слова App Store/AK_ключові-слова_AppStore-США_5-слів_14.10.csv`
+- `data/raw/genesis/02_AppKittie/2.5 Креатори/AK_креатори_WEBTOON_YouTube_14.10.csv`
+- `data/raw/genesis/02_AppKittie/2.6 Онбординги і пейволи/AK_пейволи_manga_5-застосунків_14.10.docx`
+- `data/raw/genesis/02_AppKittie/2.7 Як працює AppKittie/AK_інтерфейс_скріни-вкладок_13.10.docx`
+- `data/raw/genesis/03_Відгуки Google Play/GP_відгуки_Manta_14.10.csv`
+- `data/raw/genesis/03_Відгуки Google Play/GP_відгуки_Tapas_14.10.csv`
+- `data/raw/genesis/03_Відгуки Google Play/GP_відгуки_WEBTOON_14.10.csv`
+- `data/raw/genesis/03_Відгуки Google Play/GP_відгуки_усі-3-застосунки_14.10.csv`
+- `data/raw/genesis/04_Безкоштовні сервіси/FREE_Similarweb-AppMagic-Trends-MetaAdLibrary-стори_13.10.xlsx`
 
 ## Exact duplicates (same MD5)
 

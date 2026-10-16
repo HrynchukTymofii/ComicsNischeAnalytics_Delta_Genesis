@@ -7,7 +7,20 @@
     "revenue_basis": null,
     "_comment": "Set to \"net\" or \"gross\" once confirmed. build-data refuses to load Genesis revenue while this is null."
   },
+  "appkittie": {
+    "revenue_basis": "net",
+    "_comment": "User decision 2026-10-16: AppKittie revenue is net, like Sensor Tower (user's belief, not verified by AppKittie docs). Shown next to Sensor Tower, never merged."
+  },
+  "appmagic": {
+    "revenue_basis": null,
+    "_comment": "Unknown. AppMagic demo shows only lower bounds ('> $500 000' for 30 days); shown as '≥ $X', basis not stated."
+  },
   "exclude_files": [
+    {
+      "md5": "deab45e148c9dcd0e63501041764e2dd",
+      "original_name": "GP_відгуки_усі-3-застосунки_14.10.csv",
+      "reason": "Union of GP_відгуки_Manta/Tapas/WEBTOON_14.10.csv (same 860 reviews) — would double-count reviews"
+    },
     {
       "md5": "7d94e10e38d4eadfc7375cb1b592dae4",
       "original_name": "Unified_Downloads_Feb_23,_2023_Mar_4,_2023,_All_112_Countries_Regions.csv",

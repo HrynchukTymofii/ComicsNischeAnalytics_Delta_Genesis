@@ -172,9 +172,31 @@ def _reg(r: pd.Series | None, col: str):
     return v if v not in ("", None) else None
 
 
+def load_registry(paths: Paths) -> pd.DataFrame:
+    """registry.csv (from the Google Sheet) + data/catalog/extra_apps.csv (maintained by hand).
+
+    An extra row whose slug is already in the registry only fills that row's empty fields;
+    other extra rows are new apps (e.g. found in AppKittie / the free-services workbook).
+    """
+    registry = pd.read_csv(paths.registry_csv, dtype=str).fillna("")
+    extra_csv = paths.catalog / "extra_apps.csv"
+    if not extra_csv.exists():
+        return registry
+    extra = pd.read_csv(extra_csv, dtype=str).fillna("")
+    for _, e in extra.iterrows():
+        hit = registry.index[registry["slug"] == e["slug"]]
+        if len(hit):
+            for col in registry.columns:
+                if col in e and e[col] and not registry.at[hit[0], col]:
+                    registry.at[hit[0], col] = e[col]
+        else:
+            registry = pd.concat([registry, e.to_frame().T], ignore_index=True)
+    return registry.fillna("")
+
+
 def build_catalog(paths: Paths) -> tuple[list[dict], list[str], list[str]]:
     apps = collect_apps(paths)
-    registry = pd.read_csv(paths.registry_csv, dtype=str).fillna("")
+    registry = load_registry(paths)
     matches = match_registry(apps, registry)
 
     records = []

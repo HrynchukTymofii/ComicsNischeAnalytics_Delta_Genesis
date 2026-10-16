@@ -9,7 +9,8 @@ import { useControls } from "@/lib/controls";
 import {
   REGION_LABEL, chartBasisNote, chartValue, countryName, fmtAxisUsd, fmtCompact, fmtInt, fmtMoney, fmtPct, fmtUsdSmall, monthLabel, periodLabel,
 } from "@/lib/labels";
-import type { AppMetrics, ByCountry, CatalogApp, Region, Series } from "@/lib/types";
+import type { AppIntel, AppMetrics, ByCountry, CatalogApp, Region, Series } from "@/lib/types";
+import { AppIntelSections, type StLatest } from "./AppIntel";
 import { MoneyTooltip } from "./ChartTooltip";
 import { AppIcon, ChartFrame, ExtLink, Flag, GrowthBadge, Metric, RangeButtons, SERIES, Section, SegmentBadge, StatusBadge } from "./ui";
 
@@ -23,9 +24,18 @@ interface Props {
   metrics: Partial<Record<Region, AppMetrics>>;
   byCountry: ByCountry | null;
   platform: Partial<Record<Region, { yearly: ({ year: number } & Record<string, number | null>)[]; l12m: Record<string, number | null> }>>;
+  intel: AppIntel | null;
 }
 
-export function AppView({ app, series, metrics, byCountry, platform }: Props) {
+/** Last complete month of the World series, for the "other sources" comparison table. */
+function latestWorld(s: Series | undefined): StLatest | null {
+  if (!s) return null;
+  for (let i = s.months.length - 1; i >= 0; i--)
+    if (!s.partial[i] && (s.revenue_net[i] ?? 0) > 0) return { month: s.months[i], revenue_net: s.revenue_net[i]!, downloads: s.downloads[i] ?? 0 };
+  return null;
+}
+
+export function AppView({ app, series, metrics, byCountry, platform, intel }: Props) {
   const { basis, region } = useControls();
   const [countryPeriod, setCountryPeriod] = useState<"l12m" | "all_time">("l12m");
   const s = series[region];
@@ -69,7 +79,10 @@ export function AppView({ app, series, metrics, byCountry, platform }: Props) {
       </header>
 
       {!s || !m ? (
-        <p className="text-ink-2">Немає даних Sensor Tower для регіону «{REGION_LABEL[region]}».</p>
+        <p className="text-ink-2">
+          {app.has_data ? `Немає даних Sensor Tower для регіону «${REGION_LABEL[region]}».` : "Даних Sensor Tower для цього застосунку немає."}
+          {intel ? " Нижче — дані інших джерел." : ""}
+        </p>
       ) : (
         <>
           <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -235,6 +248,8 @@ export function AppView({ app, series, metrics, byCountry, platform }: Props) {
           </Section>
         </>
       )}
+
+      {intel && <AppIntelSections intel={intel} st={latestWorld(series.world)} />}
     </div>
   );
 }

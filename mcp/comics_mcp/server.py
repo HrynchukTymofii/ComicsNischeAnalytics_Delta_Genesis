@@ -364,6 +364,90 @@ def us_snapshot_ranking(basis: str = "net") -> dict:
     return envelope(period, "us", basis, apps=data)
 
 
+# --- other sources (`make intel`): AppKittie, AppMagic, Google Play reviews, Similarweb, Trends, SEC -----
+# Snapshots, not Sensor Tower: each result names its sources and is never meant to be added to ST figures.
+
+INTEL_NOTE = ("Not Sensor Tower. Snapshot data from other sources, each item tagged with source and as_of; "
+              "never add these numbers to Sensor Tower figures (side by side only). AppKittie revenue is net "
+              "(user decision 2026-10-16); AppMagic gives lower bounds only, basis not stated.")
+
+
+@lru_cache(maxsize=1)
+def intel() -> dict:
+    f = PROCESSED / "intel.json"
+    if not f.exists():
+        raise FileNotFoundError("intel.json not found — run `make intel` first")
+    return json.loads(f.read_text(encoding="utf-8"))
+
+
+@mcp.tool()
+def app_intel(app: str) -> dict:
+    """Everything other sources know about one app: estimates from AppKittie/AppMagic (30 days, per store),
+    monetization (pricing model, in-app purchase prices), store pages, ads summary, web traffic (Similarweb),
+    Google Trends, deals, SEC figures (WEBTOON). Review texts and ad creatives: use `reviews` / `ads`."""
+    a = resolve_app(app)
+    d = dict(intel()["apps"].get(a["slug"], {}))
+    if not d:
+        return {"period": None, "region": None, "revenue_basis": None, "app": a["slug"],
+                "note": "no data from other sources for this app"}
+    if "reviews" in d:
+        r = d.pop("reviews")
+        d["reviews_summary"] = {k: v for k, v in r.items() if k != "items"}
+    if "ads" in d:
+        d["ads"] = {k: (len(v) if k == "creatives" else v) for k, v in d["ads"].items()}
+    return {"period": "snapshots: 30 days before as_of (AppKittie/AppMagic), Sep 2026 (Similarweb), see each item",
+            "region": "World unless an item says US", "revenue_basis": "per item: revenue_basis net | null (not stated); bound point | lower",
+            "app": a["slug"], "name": a["display_name"], **d, "note": INTEL_NOTE}
+
+
+@mcp.tool()
+def reviews(app: str, stars: int | None = None, topic: str | None = None, sort: str = "newest", limit: int = 20) -> dict:
+    """Google Play (US, English) reviews sample for an app with stats and keyword topics.
+
+    stars: 1..5 filter. topic: price | subscription | ads | free_wait | content_missing | shutdown | bugs | translation.
+    sort: newest | helpful."""
+    a = resolve_app(app)
+    r = intel()["apps"].get(a["slug"], {}).get("reviews")
+    if not r:
+        return {"period": None, "region": None, "revenue_basis": "no revenue figures in this result", "app": a["slug"],
+                "note": "no reviews collected for this app"}
+    items = [x for x in r["items"] if (stars is None or x["stars"] == stars) and (topic is None or topic in x["topics"])]
+    if sort == "helpful":
+        items = sorted(items, key=lambda x: -x["helpful"])
+    return {**{k: v for k, v in r.items() if k not in ("items", "period")},
+            "period": f"{r['period']['from']}..{r['period']['to']} (newest {r['n']} reviews, collected {r['collected_on']})",
+            "region": "US (Google Play, en)", "revenue_basis": "no revenue figures in this result", "app": a["slug"],
+            "matching": len(items), "items": items[:max(1, min(limit, 200))],
+            "note": "Sample of the newest reviews — its average is not the store rating. Topics are keyword tags."}
+
+
+@mcp.tool()
+def ads(app: str) -> dict:
+    """Ads for an app: AppKittie creatives (headline, text, CTA, days live, spend estimate, media path under web/public),
+    Meta Ad Library active-ad count for the brand keyword (US), and verbatim hooks where collected."""
+    a = resolve_app(app)
+    d = intel()["apps"].get(a["slug"], {}).get("ads")
+    if not d:
+        return {"period": None, "region": None, "revenue_basis": None, "app": a["slug"], "note": "no ad data for this app"}
+    return {"period": "ads live around the as_of date of each item", "region": "Meta / Google (creatives); US (Ad Library)",
+            "revenue_basis": "spend_30d is an AppKittie estimate of advertiser spend, USD (not revenue)", "app": a["slug"], **d,
+            "note": INTEL_NOTE}
+
+
+@mcp.tool()
+def market_signals(section: str | None = None) -> dict:
+    """Market-level signals from other sources. section: google_trends | keywords | meta_ad_library | web |
+    appmagic | appmagic_overlap | deals | sec_webtoon | alternativeto | gaps | appkittie_search | readme (default: all but appkittie_search)."""
+    m = intel()["market"]
+    keys = [section] if section else [k for k in m if k not in ("appkittie_search", "brands")]
+    unknown = [k for k in keys if k not in m]
+    if unknown:
+        raise ValueError(f"unknown section {unknown}; choose from {sorted(m)}")
+    return {"period": f"collected {m['as_of']} (Similarweb: Sep 2026; AppMagic/AppKittie: 30 days)",
+            "region": "per table (Similarweb/AppMagic/AppKittie: World; Trends, Ad Library, keywords: US)",
+            "revenue_basis": m["revenue_basis"], **{k: m[k] for k in keys}, "note": INTEL_NOTE}
+
+
 def main() -> None:
     mcp.run()
 

@@ -17,7 +17,13 @@ Steps marked ⏸ need the user's explicit OK before continuing.
 - [x] 5. Dashboard — 6 pages, static export (26 pages); checked in the browser (data/labels), not yet on a phone-size screen
 - [x] 6. Deploy prep — `make check-deploy` OK (public/data 0.36 MB + icons 1.8 MB); README has Vercel steps. Not deployed (needs `vercel login`)
 - [x] 7. MCP server — 8 tools, `make mcp-smoke` passes over stdio; setup in mcp/README.md
-- [ ] 8. (later) New sources: AppKittie, AppMagic, …
+- [x] 8. New sources (2026-10-16): `make intel` — AppKittie (search, cards/IAP, ads+creatives, keywords, creators,
+      paywalls), Google Play reviews (Manta, Tapas, WEBTOON), free-services workbook (Similarweb, AppMagic, US stores,
+      Meta Ad Library, Google Trends, WEBTOON SEC, deals, AlternativeTo, gaps). App page sections + new page
+      «Ринкові сигнали»; catalog +8 apps (extra_apps.csv); MCP +4 tools; 13 new tests. Checked in the browser
+      (desktop + 390 px). Sensor Tower JSON unchanged (verified number by number).
+- [ ] 9. Follow-ups: AppMagic net/gross (ask/verify); more AppKittie cards (IAP) and reviews for other apps;
+      pre-existing hydration warning — country names from Intl.DisplayNames differ Node vs Chrome (e.g. Hong Kong)
 
 ## Notes / deviations agreed or to confirm
 

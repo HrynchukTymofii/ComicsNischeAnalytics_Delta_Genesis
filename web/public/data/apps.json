@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-15T16:27:13+00:00",
+ "generated_at": "2026-10-16T07:57:27+00:00",
  "segments": [
   "webtoon_platform",
   "manga",
@@ -53,18 +53,18 @@
    "has_data": true,
    "data_coverage": [
     {
-     "granularity": "monthly",
-     "start": "2023-04-01",
-     "end": "2026-09-01",
-     "regions": "WW (110 countries)",
-     "file": "data/raw/sensortower/Unified_Revenue_April_2023_September_2026,_All_112_Countries_Regions.csv"
-    },
-    {
      "granularity": "daily",
      "start": "2026-09-13",
      "end": "2026-09-30",
      "regions": "US",
-     "file": "data/raw/sensortower/Copy of DramaBox - Stream Drama Shorts  Unified Revenue (Sep 13, 2026 - Sep 30, 2026, US), Detailed (6).xlsx"
+     "file": "data/raw/sensortower/DramaBox_daily_US_2026-09-13_2026-09-30.xlsx"
+    },
+    {
+     "granularity": "monthly",
+     "start": "2023-04-01",
+     "end": "2026-09-01",
+     "regions": "WW (110 countries)",
+     "file": "data/raw/sensortower/DramaBox_monthly_WW110_2023-04-01_2026-09-01.csv"
     }
    ]
   },
@@ -106,7 +106,7 @@
      "start": "2023-09-01",
      "end": "2026-09-01",
      "regions": "WW (111 countries)",
-     "file": "data/raw/sensortower/Unified_Revenue_September_2023_September_2026,_All_112_Countries.csv"
+     "file": "data/raw/sensortower/GlobalComix_monthly_WW111_2023-09-01_2026-09-01.csv"
     }
    ]
   },
@@ -148,7 +148,7 @@
      "start": "2023-05-01",
      "end": "2026-09-01",
      "regions": "WW (84 countries)",
-     "file": "data/raw/sensortower/Unified_Revenue_May_2023_September_2026,_All_112_Countries_Regions.csv"
+     "file": "data/raw/sensortower/K-MANGA_monthly_WW84_2023-05-01_2026-09-01.csv"
     }
    ]
   },
@@ -188,18 +188,18 @@
    "has_data": true,
    "data_coverage": [
     {
-     "granularity": "monthly",
-     "start": "2019-01-01",
-     "end": "2026-09-01",
-     "regions": "WW (112 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_January_2019_September_2026,_All_112_Countries (2).csv"
-    },
-    {
      "granularity": "daily",
      "start": "2026-09-13",
      "end": "2026-09-30",
      "regions": "US",
-     "file": "data/raw/sensortower/Copy of Lezhin Comics-Premium Webtoons Unified Revenue (Sep 13, 2026 - Sep 30, 2026, US), Detailed (4).xlsx"
+     "file": "data/raw/sensortower/Lezhin-Comics-Premium-Webtoons_daily_US_2026-09-13_2026-09-30.xlsx"
+    },
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01",
+     "regions": "WW (112 countries)",
+     "file": "data/raw/sensortower/Lezhin-Comics-Premium-Webtoons_monthly_WW112_2019-01-01_2026-09-01.csv"
     }
    ]
   },
@@ -241,7 +241,7 @@
      "start": "2019-01-01",
      "end": "2026-09-01",
      "regions": "WW (110 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_January_2019_September_2026,_All_112_Countries (9).csv"
+     "file": "data/raw/sensortower/MANGA-Plus-by-SHUEISHA_monthly_WW110_2019-01-01_2026-09-01.csv"
     }
    ]
   },
@@ -285,7 +285,7 @@
      "start": "2019-01-01",
      "end": "2026-09-01",
      "regions": "WW (112 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_January_2019_September_2026,_All_112_Countries (4).csv"
+     "file": "data/raw/sensortower/Manga-UP_monthly_WW112_2019-01-01_2026-09-01.csv"
     }
    ]
   },
@@ -323,18 +323,18 @@
    "has_data": true,
    "data_coverage": [
     {
-     "granularity": "monthly",
-     "start": "2020-11-01",
-     "end": "2026-09-01",
-     "regions": "WW (112 countries)",
-     "file": "data/raw/sensortower/Unified_Revenue_November_2020_September_2026,_All_112_Countries.csv"
-    },
-    {
      "granularity": "daily",
      "start": "2026-09-13",
      "end": "2026-09-30",
      "regions": "US",
-     "file": "data/raw/sensortower/Copy of Manta - Manga, Manhwa, Novels Unified Revenue (Sep 13, 2026 - Sep 30, 2026, US), Detailed (2).xlsx"
+     "file": "data/raw/sensortower/Manta_daily_US_2026-09-13_2026-09-30.xlsx"
+    },
+    {
+     "granularity": "monthly",
+     "start": "2020-11-01",
+     "end": "2026-09-01",
+     "regions": "WW (112 countries)",
+     "file": "data/raw/sensortower/Manta_monthly_WW112_2020-11-01_2026-09-01.csv"
     }
    ]
   },
@@ -376,7 +376,7 @@
      "start": "2026-03-23",
      "end": "2026-09-28",
      "regions": "WW (111 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_Week_of_Feb_23rd,_2026_Week_of_Sep_28th,_2026.csv"
+     "file": "data/raw/sensortower/MoboDrama_weekly_WW111_2026-03-23_2026-09-28.csv"
     }
    ]
   },
@@ -418,7 +418,7 @@
      "start": "2020-07-01",
      "end": "2025-07-01",
      "regions": "WW (110 countries)",
-     "file": "data/raw/sensortower/Unified_Revenue_July_2020_September_2026,_All_112_Countries_Regions.csv"
+     "file": "data/raw/sensortower/POCKET-COMICS_monthly_WW110_2020-07-01_2025-07-01.csv"
     }
    ]
   },
@@ -456,18 +456,18 @@
    "has_data": true,
    "data_coverage": [
     {
-     "granularity": "monthly",
-     "start": "2022-08-01",
-     "end": "2026-09-01",
-     "regions": "WW (111 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_August_2022_September_2026,_All_112_Countries.csv"
-    },
-    {
      "granularity": "daily",
      "start": "2026-09-13",
      "end": "2026-09-30",
      "regions": "US",
-     "file": "data/raw/sensortower/Copy of ReelShort - Stream Drama & TV Unified Revenue (Sep 13, 2026 - Sep 30, 2026, US), Detailed (5).xlsx"
+     "file": "data/raw/sensortower/ReelShort_daily_US_2026-09-13_2026-09-30.xlsx"
+    },
+    {
+     "granularity": "monthly",
+     "start": "2022-08-01",
+     "end": "2026-09-01",
+     "regions": "WW (111 countries)",
+     "file": "data/raw/sensortower/ReelShort_monthly_WW111_2022-08-01_2026-09-01.csv"
     }
    ]
   },
@@ -509,7 +509,7 @@
      "start": "2019-01-01",
      "end": "2026-09-01",
      "regions": "WW (39 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_January_2019_September_2026,_All_112_Countries (3).csv"
+     "file": "data/raw/sensortower/Shonen-Jump-Manga-Comics_monthly_WW39_2019-01-01_2026-09-01.csv"
     }
    ]
   },
@@ -547,18 +547,18 @@
    "has_data": true,
    "data_coverage": [
     {
-     "granularity": "monthly",
-     "start": "2019-01-01",
-     "end": "2026-09-01",
-     "regions": "WW (112 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_January_2019_September_2026,_All_112_Countries.csv"
-    },
-    {
      "granularity": "daily",
      "start": "2026-09-13",
      "end": "2026-09-30",
      "regions": "US",
-     "file": "data/raw/sensortower/Copy of Tapas – Comics and Novels Unified_Downloads_Sep_13,_2026_Sep_30,_2026,_US,_Detailed_1.xlsx"
+     "file": "data/raw/sensortower/Tapas_daily_US_2026-09-13_2026-09-30.xlsx"
+    },
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01",
+     "regions": "WW (112 countries)",
+     "file": "data/raw/sensortower/Tapas_monthly_WW112_2019-01-01_2026-09-01.csv"
     }
    ]
   },
@@ -600,7 +600,7 @@
      "start": "2026-09-13",
      "end": "2026-09-30",
      "regions": "US",
-     "file": "data/raw/sensortower/Copy of Tappytoon Manhwa & Novels Unified Revenue (Sep 13, 2026 - Sep 30, 2026, US), Detailed (3).xlsx"
+     "file": "data/raw/sensortower/Tappytoon-Manhwa-Novels_daily_US_2026-09-13_2026-09-30.xlsx"
     }
    ]
   },
@@ -644,7 +644,7 @@
      "start": "2019-01-01",
      "end": "2026-09-01",
      "regions": "WW (112 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_January_2019_September_2026,_All_112_Countries (6).csv"
+     "file": "data/raw/sensortower/Toomics_monthly_WW112_2019-01-01_2026-09-01.csv"
     }
    ]
   },
@@ -683,18 +683,18 @@
    "has_data": true,
    "data_coverage": [
     {
-     "granularity": "monthly",
-     "start": "2019-01-01",
-     "end": "2026-09-01",
-     "regions": "WW (112 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_January_2019_September_2026,_All_112_Countries (5).csv"
-    },
-    {
      "granularity": "daily",
      "start": "2026-09-13",
      "end": "2026-09-30",
      "regions": "US",
-     "file": "data/raw/sensortower/Copy of Wattpad - Read & Write Stories Unified Revenue (Sep 13, 2026 - Sep 30, 2026, US), Detailed (7).xlsx"
+     "file": "data/raw/sensortower/Wattpad_daily_US_2026-09-13_2026-09-30.xlsx"
+    },
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01",
+     "regions": "WW (112 countries)",
+     "file": "data/raw/sensortower/Wattpad_monthly_WW112_2019-01-01_2026-09-01.csv"
     }
    ]
   },
@@ -736,7 +736,7 @@
      "start": "2019-01-01",
      "end": "2026-09-01",
      "regions": "WW (111 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_January_2019_September_2026,_All_112_Countries (8).csv"
+     "file": "data/raw/sensortower/WebComics_monthly_WW111_2019-01-01_2026-09-01.csv"
     }
    ]
   },
@@ -775,18 +775,18 @@
    "has_data": true,
    "data_coverage": [
     {
-     "granularity": "monthly",
-     "start": "2019-01-01",
-     "end": "2026-09-01",
-     "regions": "WW (111 countries)",
-     "file": "data/raw/sensortower/Unified_Downloads_January_2019_September_2026,_All_112_Countries (7).csv"
-    },
-    {
      "granularity": "daily",
      "start": "2026-09-13",
      "end": "2026-09-30",
      "regions": "US",
-     "file": "data/raw/sensortower/Copy of WebNovel Unified Revenue (Sep 13, 2026 - Sep 30, 2026, US), Detailed (8).xlsx"
+     "file": "data/raw/sensortower/WebNovel_daily_US_2026-09-13_2026-09-30.xlsx"
+    },
+    {
+     "granularity": "monthly",
+     "start": "2019-01-01",
+     "end": "2026-09-01",
+     "regions": "WW (111 countries)",
+     "file": "data/raw/sensortower/WebNovel_monthly_WW111_2019-01-01_2026-09-01.csv"
     }
    ]
   },
@@ -829,21 +829,21 @@
      "start": "2026-09-13",
      "end": "2026-09-30",
      "regions": "US",
-     "file": "data/raw/sensortower/Copy of WEBTOON_ Manga, Comics, Manhwa Unified Revenue (Sep 13, 2026 - Sep 30, 2026, US), Detailed.xlsx"
+     "file": "data/raw/sensortower/WEBTOON_daily_US_2026-09-13_2026-09-30.xlsx"
     },
     {
      "granularity": "monthly",
      "start": "2015-01-01",
      "end": "2025-12-01",
      "regions": "WW (110 countries)",
-     "file": "data/raw/sensortower/WEBTOON_ Manga, Comics, Manhwa  Analisis - Unified_Revenue_January_2015_December_2025,_All_112_Countries_Regions.csv"
+     "file": "data/raw/sensortower/WEBTOON_monthly+weekly_WW110_2015-01-01_2026-09-28.csv"
     },
     {
      "granularity": "weekly",
      "start": "2025-12-29",
      "end": "2026-09-28",
      "regions": "WW (110 countries)",
-     "file": "data/raw/sensortower/WEBTOON_ Manga, Comics, Manhwa  Analisis - Unified_Revenue_January_2015_December_2025,_All_112_Countries_Regions.csv"
+     "file": "data/raw/sensortower/WEBTOON_monthly+weekly_WW110_2015-01-01_2026-09-28.csv"
     }
    ]
   },
@@ -852,27 +852,29 @@
    "display_name": "asurascans.com",
    "unified_id": null,
    "unified_name": null,
-   "ios_ids": [],
+   "ios_ids": [
+    "6446809087"
+   ],
    "android_packages": [],
-   "developer": null,
+   "developer": "Dat Huynh",
    "publisher": null,
    "company": null,
    "parent": null,
    "segment": "piracy",
-   "ios_category": null,
+   "ios_category": "Book",
    "status": "active",
    "status_note": null,
    "shortlist": false,
    "markets": "Глобально",
    "monetization": "Реклама; Platinum $3,99/міс",
    "website": "https://asurascans.com",
-   "app_store_url": null,
+   "app_store_url": "https://apps.apple.com/us/app/asura-scans-top-manga-reader/id6446809087",
    "google_play_url": null,
-   "icon_path": null,
-   "rating": null,
-   "rating_count": null,
-   "rating_store": null,
-   "release_date": null,
+   "icon_path": "/icons/asurascans-com.png",
+   "rating": 4.28,
+   "rating_count": 579,
+   "rating_store": "us",
+   "release_date": "2023-03-27",
    "in_registry": true,
    "has_data": false,
    "data_coverage": []
@@ -898,6 +900,38 @@
    "website": "https://www.azuki.co",
    "app_store_url": null,
    "google_play_url": null,
+   "icon_path": null,
+   "rating": null,
+   "rating_count": null,
+   "rating_store": null,
+   "release_date": null,
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
+   "slug": "book-walker",
+   "display_name": "BOOK WALKER – Manga & Novels",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [],
+   "android_packages": [
+    "jp.bookwalker.kreader.android.epub"
+   ],
+   "developer": null,
+   "publisher": null,
+   "company": "BOOK WALKER Co., Ltd.",
+   "parent": "KADOKAWA",
+   "segment": "manga",
+   "ios_category": null,
+   "status": "active",
+   "status_note": null,
+   "shortlist": false,
+   "markets": null,
+   "monetization": "Покупки томів",
+   "website": "https://global.bookwalker.jp",
+   "app_store_url": null,
+   "google_play_url": "https://play.google.com/store/apps/details?id=jp.bookwalker.kreader.android.epub",
    "icon_path": null,
    "rating": null,
    "rating_count": null,
@@ -963,6 +997,38 @@
    "rating_count": null,
    "rating_store": null,
    "release_date": null,
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
+   "slug": "daycomics",
+   "display_name": "DAYcomics",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [
+    "6470585655"
+   ],
+   "android_packages": [],
+   "developer": "TOPCO CO.,LTD",
+   "publisher": null,
+   "company": "TOPCO Co. (TOPTOON)",
+   "parent": "TOPCO",
+   "segment": "webtoon_platform",
+   "ios_category": "Book",
+   "status": "active",
+   "status_note": null,
+   "shortlist": false,
+   "markets": null,
+   "monetization": null,
+   "website": "https://daycomics.com",
+   "app_store_url": "https://apps.apple.com/us/app/daycomics/id6470585655",
+   "google_play_url": null,
+   "icon_path": "/icons/daycomics.png",
+   "rating": 3.1,
+   "rating_count": 10,
+   "rating_store": "us",
+   "release_date": "2023-12-05",
    "in_registry": true,
    "has_data": false,
    "data_coverage": []
@@ -1118,6 +1184,38 @@
    "data_coverage": []
   },
   {
+   "slug": "manga-bang",
+   "display_name": "Manga BANG！",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [
+    "939480693"
+   ],
+   "android_packages": [],
+   "developer": "Amazia,Inc",
+   "publisher": null,
+   "company": "Amazia, Inc.",
+   "parent": null,
+   "segment": "manga",
+   "ios_category": "Book",
+   "status": "active",
+   "status_note": null,
+   "shortlist": false,
+   "markets": "Японія",
+   "monetization": null,
+   "website": null,
+   "app_store_url": "https://apps.apple.com/us/app/manga-bang/id939480693",
+   "google_play_url": null,
+   "icon_path": "/icons/manga-bang.png",
+   "rating": 4.75,
+   "rating_count": 699,
+   "rating_store": "us",
+   "release_date": "2014-11-26",
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
    "slug": "manga-mirai",
    "display_name": "MANGA MIRAI",
    "unified_id": null,
@@ -1136,6 +1234,132 @@
    "markets": "США",
    "monetization": "Покупки",
    "website": "https://mangamirai.com",
+   "app_store_url": null,
+   "google_play_url": null,
+   "icon_path": null,
+   "rating": null,
+   "rating_count": null,
+   "rating_store": null,
+   "release_date": null,
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
+   "slug": "manga-reader-plus",
+   "display_name": "Manga Reader Plus – Japan Zone",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [
+    "6452725987"
+   ],
+   "android_packages": [],
+   "developer": "European apps solutions LTD",
+   "publisher": null,
+   "company": "European apps solutions LTD",
+   "parent": null,
+   "segment": "manga",
+   "ios_category": "Book",
+   "status": "active",
+   "status_note": "Читалка манги; офіційність не перевірено",
+   "shortlist": false,
+   "markets": null,
+   "monetization": null,
+   "website": null,
+   "app_store_url": "https://apps.apple.com/us/app/manga-reader-plus-japan-zone/id6452725987",
+   "google_play_url": null,
+   "icon_path": "/icons/manga-reader-plus.png",
+   "rating": 4.45,
+   "rating_count": 1621,
+   "rating_store": "us",
+   "release_date": "2023-08-10",
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
+   "slug": "mangra",
+   "display_name": "Manga Translator – Mangra",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [
+    "6502868308"
+   ],
+   "android_packages": [],
+   "developer": "Basel Baragabah",
+   "publisher": null,
+   "company": null,
+   "parent": null,
+   "segment": "manga",
+   "ios_category": "Utilities",
+   "status": "active",
+   "status_note": "AI-перекладач манги (утиліта)",
+   "shortlist": false,
+   "markets": null,
+   "monetization": "Підписка",
+   "website": null,
+   "app_store_url": "https://apps.apple.com/us/app/manga-translator-mangra/id6502868308",
+   "google_play_url": null,
+   "icon_path": "/icons/mangra.png",
+   "rating": 4.18,
+   "rating_count": 96,
+   "rating_store": "us",
+   "release_date": "2024-10-11",
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
+   "slug": "mangabuzz",
+   "display_name": "MangaBuzz",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [
+    "6777945564"
+   ],
+   "android_packages": [],
+   "developer": "Raman Gandosia",
+   "publisher": null,
+   "company": null,
+   "parent": null,
+   "segment": "manga",
+   "ios_category": "Entertainment",
+   "status": "active",
+   "status_note": "Читалка манги; офіційність не перевірено",
+   "shortlist": false,
+   "markets": null,
+   "monetization": null,
+   "website": null,
+   "app_store_url": "https://apps.apple.com/us/app/mangabuzz/id6777945564",
+   "google_play_url": null,
+   "icon_path": "/icons/mangabuzz.png",
+   "rating": 4.21,
+   "rating_count": 68,
+   "rating_store": "us",
+   "release_date": "2026-06-15",
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
+   "slug": "mangadex",
+   "display_name": "mangadex.org",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [],
+   "android_packages": [],
+   "developer": null,
+   "publisher": null,
+   "company": null,
+   "parent": null,
+   "segment": "piracy",
+   "ios_category": null,
+   "status": "active",
+   "status_note": "Неофіційний агрегатор (довідково)",
+   "shortlist": false,
+   "markets": null,
+   "monetization": "Безкоштовно (неофіційно)",
+   "website": "https://mangadex.org",
    "app_store_url": null,
    "google_play_url": null,
    "icon_path": null,
@@ -1173,6 +1397,40 @@
    "rating_count": null,
    "rating_store": null,
    "release_date": null,
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
+   "slug": "mangatoon",
+   "display_name": "MangaToon: Comic & Manga",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [
+    "1385287093"
+   ],
+   "android_packages": [
+    "mobi.mangatoon.comics.aphone"
+   ],
+   "developer": "Mangatoon HK Limited",
+   "publisher": null,
+   "company": "Mangatoon HK Limited",
+   "parent": null,
+   "segment": "webtoon_platform",
+   "ios_category": "Book",
+   "status": "active",
+   "status_note": null,
+   "shortlist": false,
+   "markets": null,
+   "monetization": null,
+   "website": "https://mangatoon.mobi",
+   "app_store_url": "https://apps.apple.com/us/app/mangatoon-comic-manga/id1385287093",
+   "google_play_url": "https://play.google.com/store/apps/details?id=mobi.mangatoon.comics.aphone",
+   "icon_path": "/icons/mangatoon.png",
+   "rating": 4.49,
+   "rating_count": 4890,
+   "rating_store": "us",
+   "release_date": "2018-07-03",
    "in_registry": true,
    "has_data": false,
    "data_coverage": []
@@ -1306,6 +1564,72 @@
    "data_coverage": []
   },
   {
+   "slug": "pops",
+   "display_name": "POPS – Your Comic Destination",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [
+    "1478994434"
+   ],
+   "android_packages": [],
+   "developer": "POPS Worldwide",
+   "publisher": null,
+   "company": "POPS Worldwide",
+   "parent": null,
+   "segment": "webtoon_platform",
+   "ios_category": "Entertainment",
+   "status": "active",
+   "status_note": null,
+   "shortlist": false,
+   "markets": null,
+   "monetization": null,
+   "website": null,
+   "app_store_url": "https://apps.apple.com/us/app/pops-your-comic-destination/id1478994434",
+   "google_play_url": null,
+   "icon_path": "/icons/pops.png",
+   "rating": 4.29,
+   "rating_count": 841,
+   "rating_store": "us",
+   "release_date": "2019-10-04",
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
+   "slug": "pratilipi-comics",
+   "display_name": "Pratilipi Comics",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [
+    "1567236313"
+   ],
+   "android_packages": [
+    "com.pratilipi.comics"
+   ],
+   "developer": "Nasadiya Technologies Private Limited",
+   "publisher": null,
+   "company": "Nasadiya Technologies (Pratilipi)",
+   "parent": null,
+   "segment": "webtoon_platform",
+   "ios_category": "Book",
+   "status": "active",
+   "status_note": null,
+   "shortlist": false,
+   "markets": "Індія",
+   "monetization": null,
+   "website": null,
+   "app_store_url": "https://apps.apple.com/us/app/pratilipi-comics/id1567236313",
+   "google_play_url": "https://play.google.com/store/apps/details?id=com.pratilipi.comics",
+   "icon_path": "/icons/pratilipi-comics.png",
+   "rating": 3,
+   "rating_count": 5,
+   "rating_store": "us",
+   "release_date": "2021-07-04",
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
    "slug": "radish",
    "display_name": "Radish",
    "unified_id": null,
@@ -1340,27 +1664,61 @@
    "display_name": "ToonSpace",
    "unified_id": null,
    "unified_name": null,
-   "ios_ids": [],
+   "ios_ids": [
+    "6746833176"
+   ],
    "android_packages": [],
-   "developer": null,
+   "developer": "Matlicia Limited",
    "publisher": null,
    "company": null,
    "parent": null,
    "segment": "webtoon_platform",
-   "ios_category": null,
+   "ios_category": "Entertainment",
    "status": "newcomer",
    "status_note": "Новачок (03.2026)",
    "shortlist": false,
    "markets": null,
    "monetization": null,
    "website": null,
-   "app_store_url": null,
+   "app_store_url": "https://apps.apple.com/us/app/toonspace-comics-and-anime/id6746833176",
    "google_play_url": null,
-   "icon_path": null,
-   "rating": null,
-   "rating_count": null,
-   "rating_store": null,
-   "release_date": null,
+   "icon_path": "/icons/toonspace.png",
+   "rating": 4.21,
+   "rating_count": 332,
+   "rating_store": "us",
+   "release_date": "2026-03-27",
+   "in_registry": true,
+   "has_data": false,
+   "data_coverage": []
+  },
+  {
+   "slug": "vibeshort",
+   "display_name": "VibeShort: AI Short Dramas",
+   "unified_id": null,
+   "unified_name": null,
+   "ios_ids": [
+    "6758667154"
+   ],
+   "android_packages": [],
+   "developer": "AGILE QUADRANT MEDIA LIMITED",
+   "publisher": null,
+   "company": "Agile Quadrant Media",
+   "parent": null,
+   "segment": "ai_comic_drama",
+   "ios_category": "Entertainment",
+   "status": "newcomer",
+   "status_note": "AI short drama; AppMagic: overlap з WEBTOON 91%",
+   "shortlist": false,
+   "markets": null,
+   "monetization": null,
+   "website": null,
+   "app_store_url": "https://apps.apple.com/us/app/vibeshort-ai-short-dramas/id6758667154",
+   "google_play_url": null,
+   "icon_path": "/icons/vibeshort.png",
+   "rating": 4.69,
+   "rating_count": 50145,
+   "rating_store": "us",
+   "release_date": "2026-02-25",
    "in_registry": true,
    "has_data": false,
    "data_coverage": []

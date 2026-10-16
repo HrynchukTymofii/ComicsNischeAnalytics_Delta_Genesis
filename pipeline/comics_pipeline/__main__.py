@@ -1,4 +1,4 @@
-"""python -m comics_pipeline {audit,catalog,build-data}"""
+"""python -m comics_pipeline {registry,audit,catalog,build-data,metrics,intel,check-deploy}"""
 from __future__ import annotations
 
 import argparse
@@ -11,7 +11,7 @@ try:  # use the OS certificate store (needed behind TLS-inspecting proxies/antiv
 except ImportError:  # pragma: no cover
     pass
 
-from . import audit, build_data, catalog, check_deploy, metrics, registry
+from . import audit, build_data, catalog, check_deploy, intel, metrics, registry
 from .paths import get_paths
 
 
@@ -27,6 +27,7 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("build-data", help="raw exports -> parquet + web JSON")
     sub.add_parser("check-deploy", help="no raw/parquet files in git; web/public/data < 20 MB")
     sub.add_parser("metrics", help="monthly.parquet -> web/public/data/metrics.json")
+    sub.add_parser("intel", help="AppKittie, Google Play reviews, free services -> web/public/data/intel/ + market_signals.json")
     args = parser.parse_args(argv)
 
     paths = get_paths()
@@ -40,6 +41,8 @@ def main(argv: list[str] | None = None) -> int:
         build_data.run(paths)
     elif args.cmd == "metrics":
         metrics.run(paths)
+    elif args.cmd == "intel":
+        intel.run(paths)
     elif args.cmd == "check-deploy":
         return 0 if check_deploy.run(paths) else 1
     return 0

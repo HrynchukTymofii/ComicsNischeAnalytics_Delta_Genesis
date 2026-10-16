@@ -8,7 +8,15 @@ import type { Catalog, LifecycleStatus, Metrics, MonthlyByApp } from "@/lib/type
 import { AppQuickView } from "./AppQuickView";
 import { AppIcon, ExtLink, GrowthBadge, SegmentBadge, StatusBadge } from "./ui";
 
-export function CatalogView({ catalog, metrics, monthly }: { catalog: Catalog; metrics: Metrics; monthly: MonthlyByApp }) {
+/** intel_index.json section keys -> short labels for the «Дані» column (only the ones worth listing). */
+const INTEL_LABEL: Record<string, string> = {
+  estimates: "оцінки AppKittie/AppMagic", monetization: "монетизація", reviews: "відгуки", ads: "реклама",
+  web: "веб-трафік", trends: "Google Trends", deals: "угоди", sec: "звітність SEC", paywalls: "пейволи",
+};
+
+export function CatalogView({ catalog, metrics, monthly, intel }: {
+  catalog: Catalog; metrics: Metrics; monthly: MonthlyByApp; intel: Record<string, string[]>;
+}) {
   const { basis, region, segments } = useControls();
   const [open, setOpen] = useState<string | null>(null);
   const toggle = (slug: string, e: MouseEvent) => {
@@ -26,18 +34,19 @@ export function CatalogView({ catalog, metrics, monthly }: { catalog: Catalog; m
       .filter((a) => !a.segment || segments.includes(a.segment))
       .filter((a) => !status || a.status === status)
       .filter((a) => !onlyShort || a.shortlist)
-      .filter((a) => !onlyData || a.has_data)
+      .filter((a) => !onlyData || a.has_data || intel[a.slug])
       .filter((a) => !needle || [a.display_name, a.developer, a.publisher, a.company, a.parent]
         .some((v) => v?.toLowerCase().includes(needle)))
       .sort((a, b) => (metrics.apps[b.slug]?.[region]?.l12m.revenue_net ?? -1) - (metrics.apps[a.slug]?.[region]?.l12m.revenue_net ?? -1));
-  }, [catalog.apps, metrics, q, status, onlyShort, onlyData, segments, region]);
+  }, [catalog.apps, metrics, intel, q, status, onlyShort, onlyData, segments, region]);
 
   return (
     <div className="space-y-4">
       <div>
         <h1 className="text-2xl font-semibold">Каталог застосунків</h1>
         <p className="text-sm text-ink-2">
-          {catalog.apps.length} застосунків із реєстру; {catalog.apps.filter((a) => a.has_data).length} мають дані Sensor Tower.
+          {catalog.apps.length} застосунків із реєстру; {catalog.apps.filter((a) => a.has_data).length} мають дані Sensor Tower,{" "}
+          {catalog.apps.filter((a) => intel[a.slug]).length} — дані інших джерел (AppKittie, відгуки, Similarweb…).
           Клікніть рядок, щоб розгорнути графік і ключові цифри застосунку.
           Виручка: L12M ({periodLabel(metrics.meta.l12m)}) · {REGION_LABEL[region]} · {BASIS_LABEL[basis]} · USD.
         </p>
@@ -92,7 +101,7 @@ export function CatalogView({ catalog, metrics, monthly }: { catalog: Catalog; m
                       ) : <span className="w-4 shrink-0" aria-hidden />}
                       <AppIcon src={a.icon_path} name={a.display_name} />
                       <div>
-                        {a.has_data ? (
+                        {a.has_data || intel[a.slug] ? (
                           <Link href={`/apps/${a.slug}/`} className="font-medium text-ink hover:underline">{a.display_name}</Link>
                         ) : <span className="font-medium text-ink">{a.display_name}</span>}
                         {a.shortlist && <span className="ml-1.5 rounded bg-grid px-1 text-[10px] uppercase text-ink-2">шорт-лист</span>}
@@ -112,7 +121,10 @@ export function CatalogView({ catalog, metrics, monthly }: { catalog: Catalog; m
                     {cov.length ? cov.map((c, i) => (
                       <div key={i}>{c.granularity === "monthly" ? "міс." : c.granularity === "weekly" ? "тижн." : c.granularity === "daily" ? "день" : c.granularity}{" "}
                         {monthLabel(c.start.slice(0, 7))}–{monthLabel(c.end.slice(0, 7))}{c.regions === "US" ? " (США)" : ""}</div>
-                    )) : <span className="text-muted">немає даних</span>}
+                    )) : <span className="text-muted">{intel[a.slug] ? "немає Sensor Tower" : "немає даних"}</span>}
+                    {intel[a.slug]?.some((k) => INTEL_LABEL[k]) && (
+                      <div className="mt-0.5 text-muted">+ {intel[a.slug].filter((k) => INTEL_LABEL[k]).map((k) => INTEL_LABEL[k]).join(", ")}</div>
+                    )}
                   </td>
                   <td className="space-x-2 px-3 py-2 text-xs">
                     <ExtLink href={a.app_store_url}>App Store</ExtLink>

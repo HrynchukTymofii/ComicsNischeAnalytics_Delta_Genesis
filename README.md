@@ -22,6 +22,7 @@ No `make`? `winget install ezwinports.make`, or run the Makefile commands direct
 | 3. after the plan is approved | `… audit --apply-plan --confirmed` | duplicates → `data/raw/_duplicates/`, files renamed, `data/raw/_rename_log.csv` |
 | 4. app catalog (+ Apple iTunes Lookup, icons) | `make catalog` | `data/catalog/apps_catalog.json`, `web/public/data/apps.json`, `web/public/icons/` |
 | 5. data + metrics | `make build-data` | `data/processed/*.parquet`, `web/public/data/*.json` |
+| 5b. other sources (AppKittie, Google Play reviews, free-services workbook in `data/raw/genesis/0X_*`) | `make intel` (also run by build-data; needs ffmpeg for resizing creatives) | `web/public/data/intel/*.json`, `market_signals.json`, `web/public/creatives/`, `data/processed/intel.json` |
 | 6. dashboard | `make web` → http://localhost:3000 | |
 | 7. checks | `make test`, `make check-deploy` | |
 

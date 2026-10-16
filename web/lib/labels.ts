@@ -1,6 +1,6 @@
 // Every number in the UI states period, region and net/gross (CLAUDE.md rule 3).
 // MetricContext is required by type wherever a number is rendered.
-import type { Basis, GrowthStatus, LifecycleStatus, Region, Segment } from "./types";
+import type { Basis, GrowthStatus, IntelBasis, LifecycleStatus, Region, Segment, Store } from "./types";
 
 export const GROSS_LOW_DIVISOR = 0.85; // 15% store fee
 export const GROSS_HIGH_DIVISOR = 0.7; // 30% store fee
@@ -125,6 +125,50 @@ export function fmtAxisUsd(v: number): string {
   if (Math.abs(v) >= 1e6) return `$${+(v / 1e6).toFixed(1)}M`;
   if (Math.abs(v) >= 1e3) return `$${(v / 1e3).toFixed(0)}K`;
   return `$${v}`;
+}
+
+// --- Other sources (AppKittie, AppMagic, Similarweb, Google Play…): snapshots, never added to Sensor Tower.
+
+export const STORE_LABEL: Record<Store, string> = { ios: "App Store", android: "Google Play", unknown: "стор не вказано" };
+
+/** "2026-10-14" -> "14.10.2026" */
+export function dateLabel(iso: string | null | undefined): string {
+  if (!iso) return "—";
+  const [y, m, d] = iso.slice(0, 10).split("-");
+  return d ? `${d}.${m}.${y}` : iso;
+}
+
+/** Basis text for another source's money: AppKittie is net (config), AppMagic does not say. */
+export function intelBasisLabel(basis: IntelBasis, ui: Basis): string {
+  if (basis === null) return "net/gross не вказано джерелом";
+  return ui === "net" ? "Net" : "Gross, оцінка (net ÷ 0,85…0,70)";
+}
+
+/** Money from another source. Net values follow the Net/Gross switch; unknown basis is shown as-is;
+ *  lower bounds (AppMagic demo) are prefixed with "≥". */
+export function fmtIntelMoney(v: number | null | undefined, basis: IntelBasis, ui: Basis, bound: "point" | "lower" = "point"): string {
+  if (v == null || !Number.isFinite(v)) return "—";
+  const s = basis === "net" ? fmtMoney(v, ui) : fmtM(v);
+  return bound === "lower" ? `≥ ${s}` : s;
+}
+
+/** "AppKittie · 30 днів до 14.10.2026 · Світ · Net · USD" — the context line for every intel number. */
+export function sourceLine(p: { source: string; period: string; region: string; basis?: string }): string {
+  return [p.source, p.period, p.region, p.basis, p.basis && "USD"].filter(Boolean).join(" · ");
+}
+
+export function fmtUsdPrice(lo: number | null, hi?: number | null): string {
+  if (lo == null) return "—";
+  return hi != null && hi !== lo ? `$${lo.toFixed(2)}–${hi.toFixed(2)}` : `$${lo.toFixed(2)}`;
+}
+
+export function hostOf(url: string | null | undefined): string | null {
+  if (!url) return null;
+  try {
+    return new URL(url.replace(/\{\{[^}]*\}\}/g, "x")).hostname.replace(/^www\./, "");
+  } catch {
+    return null;
+  }
 }
 
 const regionNames = typeof Intl !== "undefined" ? new Intl.DisplayNames(["uk"], { type: "region" }) : null;

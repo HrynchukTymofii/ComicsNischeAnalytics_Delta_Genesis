@@ -21,6 +21,10 @@ CALLS = [
     ("top_countries", {"app": "webtoon", "limit": 5}),
     ("growth_table", {"region": "us"}),
     ("us_snapshot_ranking", {}),
+    ("app_intel", {"app": "manta"}),
+    ("reviews", {"app": "tapas", "topic": "shutdown", "limit": 3}),
+    ("ads", {"app": "shonen jump"}),
+    ("market_signals", {"section": "google_trends"}),
 ]
 
 

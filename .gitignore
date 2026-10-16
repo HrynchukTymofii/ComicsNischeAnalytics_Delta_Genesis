@@ -9,6 +9,9 @@ data/catalog/03 Competitors*.csv
 data/catalog/cache/
 data/processed/**
 !data/processed/.gitkeep
+# Data copy staged for the Vercel MCP deploy (make mcp-deploy)
+mcp/data/
+.vercel/
 
 # Python
 __pycache__/

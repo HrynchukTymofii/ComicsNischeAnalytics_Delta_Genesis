@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import { AppView } from "@/components/AppView";
-import { loadByCountry, loadCatalog, loadMetrics, loadMonthly, loadPlatformSplit } from "@/lib/data";
+import { loadByCountry, loadCatalog, loadIntel, loadIntelIndex, loadMetrics, loadMonthly, loadPlatformSplit } from "@/lib/data";
 
 export async function generateStaticParams() {
-  const catalog = await loadCatalog();
-  return catalog.apps.filter((a) => a.has_data).map((a) => ({ slug: a.slug }));
+  const [catalog, index] = await Promise.all([loadCatalog(), loadIntelIndex()]);
+  // Sensor Tower apps, plus apps that only have data from other sources (AppKittie, reviews, Similarweb…)
+  return catalog.apps.filter((a) => a.has_data || index.apps[a.slug]).map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -13,8 +14,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function AppPage({ params }: { params: { slug: string } }) {
-  const [catalog, monthly, metrics, split, byCountry] = await Promise.all([
-    loadCatalog(), loadMonthly(), loadMetrics(), loadPlatformSplit(), loadByCountry(params.slug),
+  const [catalog, monthly, metrics, split, byCountry, intel] = await Promise.all([
+    loadCatalog(), loadMonthly(), loadMetrics(), loadPlatformSplit(), loadByCountry(params.slug), loadIntel(params.slug),
   ]);
   const app = catalog.apps.find((a) => a.slug === params.slug);
   if (!app) notFound();
@@ -26,6 +27,7 @@ export default async function AppPage({ params }: { params: { slug: string } }) 
       metrics={appMetrics}
       byCountry={byCountry}
       platform={split.apps[app.slug] ?? {}}
+      intel={intel}
     />
   );
 }

@@ -2,7 +2,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import type {
-  ByCountry, Catalog, CountryByApp, DataSources, Metrics, MonthlyByApp, PlatformSplit, UsSnapshot,
+  AppIntel, ByCountry, Catalog, CountryByApp, DataSources, IntelIndex, MarketSignals, Metrics, MonthlyByApp, PlatformSplit, UsSnapshot,
 } from "./types";
 
 const dataDir = path.join(process.cwd(), "public", "data");
@@ -27,3 +27,8 @@ export const loadUsSnapshot = () => readOptional<UsSnapshot>("us_snapshot.json")
 export const loadDataSources = () => readOptional<DataSources>("data_sources.json");
 export const loadByCountry = (slug: string) => readOptional<ByCountry>(`by_country_${slug}.json`);
 export const loadCountryByApp = () => readOptional<CountryByApp>("country_by_app.json");
+// Other sources (`make intel`)
+export const loadIntel = (slug: string) => readOptional<AppIntel>(`intel/${slug}.json`);
+export const loadIntelIndex = async (): Promise<IntelIndex> =>
+  (await readOptional<IntelIndex>("intel_index.json")) ?? { generated_at: "", apps: {} };
+export const loadMarketSignals = () => readOptional<MarketSignals>("market_signals.json");

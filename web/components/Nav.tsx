@@ -12,6 +12,7 @@ const LINKS = [
   { href: "/catalog/", label: "Каталог" },
   { href: "/compare/", label: "Порівняння" },
   { href: "/us-2026-09/", label: "США, вересень 2026" },
+  { href: "/market/", label: "Ринкові сигнали" },
   { href: "/about/", label: "Про дані" },
 ];
 

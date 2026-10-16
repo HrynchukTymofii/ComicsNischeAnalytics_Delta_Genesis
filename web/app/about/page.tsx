@@ -1,12 +1,12 @@
-import { loadDataSources, loadMonthly } from "@/lib/data";
-import { TIER1_NOTE, periodLabel } from "@/lib/labels";
+import { loadDataSources, loadMarketSignals, loadMonthly } from "@/lib/data";
+import { TIER1_NOTE, dateLabel, monthLabel, periodLabel } from "@/lib/labels";
 
 export const metadata = { title: "Про дані · Ринок комікс-застосунків" };
 
 const GRAN: Record<string, string> = { monthly: "місячні", weekly: "тижневі", daily: "денні" };
 
 export default async function AboutPage() {
-  const [sources, monthly] = await Promise.all([loadDataSources(), loadMonthly()]);
+  const [sources, monthly, market] = await Promise.all([loadDataSources(), loadMonthly(), loadMarketSignals()]);
   const meta = monthly.meta;
   return (
     <article className="max-w-3xl space-y-6 text-sm leading-relaxed text-ink-2">
@@ -17,7 +17,8 @@ export default async function AboutPage() {
         <p>
           Усі цифри — оцінки <b>Sensor Tower</b> (експорти «Unified», App Store + Google Play, iPhone/iPad/Android),
           у доларах США. Дані до <b>{periodLabel(meta.period_end)}</b> включно; L12M = {periodLabel(meta.l12m)}.
-          Інші джерела (AppKittie, AppMagic, внутрішні дані) будуть показані поруч, з підписом, і ніколи не сумуються з Sensor Tower.
+          Інші джерела (AppKittie, AppMagic, Similarweb, відгуки Google Play тощо) показані поруч, з підписом, і ніколи не сумуються
+          з Sensor Tower — див. розділ «Інші джерела» нижче.
         </p>
         <p>«Світ» = сума країн, що є в експорті (до 112; у Shonen Jump лише 39). «США» = рядки країни US.</p>
         <p>{TIER1_NOTE}. Список можна змінити в <code>data/catalog/regions.json</code> (потім <code>make build-data</code>).</p>
@@ -85,7 +86,33 @@ export default async function AboutPage() {
         </section>
       )}
 
-      <p className="text-xs text-muted">Згенеровано {meta.generated_at.slice(0, 10)} пайплайном `make build-data`.</p>
+      {market && (
+        <section className="space-y-2">
+          <h2 className="text-lg font-semibold text-ink">Інші джерела</h2>
+          <p>
+            Знімки, а не місячні ряди: кожна цифра має дату збору й джерело і показується <b>поруч</b> із Sensor Tower на сторінках
+            застосунків («Оцінки інших джерел», «Монетизація», «Відгуки», «Реклама і креативи», «Веб-трафік» тощо) і на сторінці
+            «Ринкові сигнали». Ці дані ніколи не додаються до цифр Sensor Tower.
+          </p>
+          <ul className="list-disc space-y-1 pl-5">
+            <li><b>AppKittie</b> ({dateLabel(market.as_of.appkittie)}): оцінки виручки й завантажень за 30 днів окремо для кожного стору, картки
+              застосунків (ціни покупок), реклама в Meta з креативами, ключові слова, скріни пейволів. Виручка вважається <b>net</b> (як у Sensor Tower)
+              — рішення користувача від 16.10.2026, документацією AppKittie не підтверджено.</li>
+            <li><b>AppMagic</b> (демо): лише <b>нижня межа</b> за 30 днів («≥ $500 000»); net чи gross — не вказано; чи це сума двох сторів — неясно.</li>
+            <li><b>Similarweb</b>: лише веб-трафік сайтів (без застосунків), {market.web[0]?.period ? monthLabel(market.web[0].period) : "—"}, світ.</li>
+            <li><b>Відгуки Google Play</b> (США, англ.): найновіші ~300 відгуків на застосунок; період вибірки різний, середня оцінка вибірки ≠ рейтинг у сторі.
+              Теми — автоматичні теги за ключовими словами.</li>
+            <li><b>Google Trends</b>, <b>Meta Ad Library</b>, сторінки сторів у США, <b>звітність WEBTOON у SEC</b>, угоди, AlternativeTo — ручний збір {dateLabel(market.as_of.free_services)}.</li>
+            <li>Креативи й скріни завантажено й зменшено для сайту (не посилаємося на зовнішні копії).</li>
+          </ul>
+          <p>
+            Використано файлів: {market.sources.used.length}. Не читаються: {market.sources.ignored.map((i) => `${i.file} (${i.reason})`).join("; ") || "—"}.
+            {market.sources.excluded.length > 0 && <> Виключено: {market.sources.excluded.map((e) => `${e.file} — ${e.reason}`).join("; ")}.</>}
+          </p>
+        </section>
+      )}
+
+      <p className="text-xs text-muted">Згенеровано {meta.generated_at.slice(0, 10)} пайплайном `make build-data` (інші джерела — `make intel`).</p>
     </article>
   );
 }
