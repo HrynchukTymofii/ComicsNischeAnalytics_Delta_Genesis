@@ -5,5 +5,9 @@
   "tier1": {
     "label": "Tier-1 countries (US, CA, GB, AU, NZ, IE, DE, FR, NL, BE, AT, CH, LU, SE, NO, DK, FI, JP, KR, SG)",
     "countries": ["US", "CA", "GB", "AU", "NZ", "IE", "DE", "FR", "NL", "BE", "AT", "CH", "LU", "SE", "NO", "DK", "FI", "JP", "KR", "SG"]
+  },
+  "asia": {
+    "label": "Asia: East, South-East, South and Central Asia (JP, KR, CN, TW, HK, MO, TH, VN, ID, MY, SG, PH, KH, LA, MM, IN, PK, BD, LK, KZ, UZ); Middle East not included",
+    "countries": ["JP", "KR", "CN", "TW", "HK", "MO", "TH", "VN", "ID", "MY", "SG", "PH", "KH", "LA", "MM", "IN", "PK", "BD", "LK", "KZ", "UZ"]
   }
 }

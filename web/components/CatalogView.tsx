@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { Fragment, useMemo, useState, type MouseEvent } from "react";
 import { useControls } from "@/lib/controls";
-import { STATUS_LABEL, fmtMoney, fmtPct, monthLabel, periodLabel, REGION_LABEL, BASIS_LABEL } from "@/lib/labels";
-import type { Catalog, LifecycleStatus, Metrics, MonthlyByApp } from "@/lib/types";
+import { STATUS_LABEL, countryName, fmtMoney, fmtPct, monthLabel, periodLabel, REGION_LABEL, BASIS_LABEL } from "@/lib/labels";
+import type { Catalog, CountryByApp, LifecycleStatus, Metrics, MonthlyByApp } from "@/lib/types";
 import { AppQuickView } from "./AppQuickView";
-import { AppIcon, ExtLink, GrowthBadge, SegmentBadge, StatusBadge } from "./ui";
+import { AppIcon, ExtLink, Flag, GrowthBadge, SegmentBadge, StatusBadge } from "./ui";
 
 /** intel_index.json section keys -> short labels for the «Дані» column (only the ones worth listing). */
 const INTEL_LABEL: Record<string, string> = {
@@ -14,8 +14,21 @@ const INTEL_LABEL: Record<string, string> = {
   web: "веб-трафік", trends: "Google Trends", deals: "угоди", sec: "звітність SEC", paywalls: "пейволи",
 };
 
-export function CatalogView({ catalog, metrics, monthly, intel }: {
-  catalog: Catalog; metrics: Metrics; monthly: MonthlyByApp; intel: Record<string, string[]>;
+/** Country with the most worldwide net revenue in L12M; all-time when the app had no L12M revenue (closed apps). */
+function topCountry(rows: CountryByApp["apps"][string] | undefined) {
+  if (!rows) return null;
+  for (const [col, allTime] of [[0, false], [2, true]] as const) {
+    const list = Object.entries(rows).map(([code, v]) => [code, v[col] ?? 0] as const).filter(([, v]) => v > 0);
+    const total = list.reduce((s, [, v]) => s + v, 0);
+    if (!total) continue;
+    const [code, rev] = list.reduce((a, b) => (b[1] > a[1] ? b : a));
+    return { code, share: rev / total, allTime };
+  }
+  return null;
+}
+
+export function CatalogView({ catalog, metrics, monthly, intel, countries }: {
+  catalog: Catalog; metrics: Metrics; monthly: MonthlyByApp; intel: Record<string, string[]>; countries: CountryByApp | null;
 }) {
   const { basis, region, segments } = useControls();
   const [open, setOpen] = useState<string | null>(null);
@@ -49,6 +62,8 @@ export function CatalogView({ catalog, metrics, monthly, intel }: {
           {catalog.apps.filter((a) => intel[a.slug]).length} — дані інших джерел (AppKittie, відгуки, Similarweb…).
           Клікніть рядок, щоб розгорнути графік і ключові цифри застосунку.
           Виручка: L12M ({periodLabel(metrics.meta.l12m)}) · {REGION_LABEL[region]} · {BASIS_LABEL[basis]} · USD.
+          Топ-країна: країна з найбільшою виручкою і її частка у світовій виручці застосунку · L12M · Net · Sensor Tower
+          (для закритих застосунків — за весь період).
         </p>
       </div>
 
@@ -70,10 +85,11 @@ export function CatalogView({ catalog, metrics, monthly, intel }: {
       </div>
 
       <div className="overflow-x-auto rounded-lg border border-hairline bg-surface">
-        <table className="w-full min-w-[900px] text-sm">
+        <table className="w-full min-w-[1000px] text-sm">
           <thead className="text-left text-ink-2">
             <tr className="border-b border-hairline">
               <th className="px-3 py-2 font-medium">Застосунок</th>
+              <th className="px-3 py-2 font-medium">Топ-країна</th>
               <th className="px-3 py-2 font-medium">Сегмент · статус</th>
               <th className="px-3 py-2 font-medium">Розробник · категорія iOS</th>
               <th className="px-3 py-2 text-right font-medium">Виручка L12M</th>
@@ -88,6 +104,7 @@ export function CatalogView({ catalog, metrics, monthly, intel }: {
               const m = metrics.apps[a.slug]?.[region];
               const cov = a.data_coverage;
               const isOpen = open === a.slug;
+              const top = topCountry(countries?.apps[a.slug]);
               return (
                 <Fragment key={a.slug}>
                 <tr onClick={a.has_data ? (e) => toggle(a.slug, e) : undefined}
@@ -108,6 +125,14 @@ export function CatalogView({ catalog, metrics, monthly, intel }: {
                         <div className="text-xs text-muted">{a.parent ?? a.company ?? ""}</div>
                       </div>
                     </div>
+                  </td>
+                  <td className="px-3 py-2">
+                    {top ? (
+                      <>
+                        <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-ink"><Flag code={top.code} />{countryName(top.code)}</span>
+                        <div className="text-xs text-muted">{fmtPct(top.share, false)} світу{top.allTime ? " · увесь період" : ""}</div>
+                      </>
+                    ) : <span className="text-muted">—</span>}
                   </td>
                   <td className="space-y-1 px-3 py-2"><SegmentBadge segment={a.segment} /><div><StatusBadge status={a.status} /></div></td>
                   <td className="px-3 py-2 text-ink-2">{a.developer ?? "—"}<div className="text-xs text-muted">{a.ios_category ?? ""}</div></td>
@@ -134,7 +159,7 @@ export function CatalogView({ catalog, metrics, monthly, intel }: {
                 </tr>
                 {isOpen && (
                   <tr className="border-b border-hairline bg-page">
-                    <td colSpan={8} className="px-4 py-4">
+                    <td colSpan={9} className="px-4 py-4">
                       <AppQuickView app={a} series={monthly.apps[a.slug]?.[region]} metrics={metrics.apps[a.slug]?.[region]}
                         region={region} basis={basis} />
                     </td>

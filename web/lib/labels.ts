@@ -11,7 +11,8 @@ export interface MetricContext {
   basis: Basis;
 }
 
-export const REGION_LABEL: Record<Region, string> = { world: "Світ", us: "США", tier1: "Tier-1" };
+export const REGION_LABEL: Record<Region, string> = { world: "Світ", us: "США", tier1: "Tier-1", asia: "Азія" };
+export const ASIA_NOTE = "Азія: Японія, Південна Корея, Китай, Тайвань, Гонконг, Макао, Таїланд, В'єтнам, Індонезія, Малайзія, Сінгапур, Філіппіни, Камбоджа, Лаос, М'янма, Індія, Пакистан, Бангладеш, Шрі-Ланка, Казахстан, Узбекистан (без Близького Сходу)";
 export const TIER1_NOTE = "Tier-1: США, Канада, Велика Британія, Австралія, Нова Зеландія, Ірландія, Німеччина, Франція, Нідерланди, Бельгія, Австрія, Швейцарія, Люксембург, Швеція, Норвегія, Данія, Фінляндія, Японія, Південна Корея, Сінгапур";
 
 export const BASIS_LABEL: Record<Basis, string> = {

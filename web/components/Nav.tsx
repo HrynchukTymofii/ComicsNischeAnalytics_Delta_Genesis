@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useControls } from "@/lib/controls";
-import { CORE_SEGMENTS, DEFAULT_SEGMENTS, SEGMENT_LABEL, TIER1_NOTE } from "@/lib/labels";
+import { ASIA_NOTE, CORE_SEGMENTS, DEFAULT_SEGMENTS, SEGMENT_LABEL, TIER1_NOTE } from "@/lib/labels";
 import type { Segment } from "@/lib/types";
 import { segmentColor } from "./ui";
 
@@ -72,8 +72,9 @@ export function Nav() {
           <Toggle label="Виручка" value={basis} onChange={setBasis}
             options={[{ value: "net", label: "Net" }, { value: "gross", label: "Gross (оцінка)" }]} />
           <Toggle label="Регіон" value={region} onChange={setRegion}
-            options={[{ value: "world", label: "Світ" }, { value: "us", label: "США" }, { value: "tier1", label: "Tier-1" }]} />
+            options={[{ value: "world", label: "Світ" }, { value: "us", label: "США" }, { value: "tier1", label: "Tier-1" }, { value: "asia", label: "Азія" }]} />
           {region === "tier1" && <span className="text-xs text-muted" title={TIER1_NOTE}>20 країн ⓘ</span>}
+          {region === "asia" && <span className="text-xs text-muted" title={ASIA_NOTE}>21 країна ⓘ</span>}
           <div className="flex flex-wrap items-center gap-1 text-xs">
             <button type="button" onClick={() => setSegments(DEFAULT_SEGMENTS)} aria-pressed={isAll}
               className={`rounded-md border border-hairline px-2 py-1 ${isAll ? "bg-ink text-page" : "bg-surface text-ink-2"}`}>

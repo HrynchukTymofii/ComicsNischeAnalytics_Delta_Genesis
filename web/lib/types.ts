@@ -1,6 +1,6 @@
 // Shapes of the JSON files in public/data (written by the Python pipeline).
 
-export type Region = "world" | "us" | "tier1";
+export type Region = "world" | "us" | "tier1" | "asia";
 export type Basis = "net" | "gross";
 export type Segment =
   | "webtoon_platform" | "manga" | "western_comics" | "webnovel" | "short_drama" | "ai_comic_drama" | "piracy";

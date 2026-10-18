@@ -69,8 +69,10 @@ Commands: `make registry`, `make audit`, `make catalog`, `make build-data` (runs
 - Sensor Tower "Revenue" and "Downloads" exports are the same file (both metrics in each).
 - US daily files 13–30.09.2026 are a separate `us_snapshot` (run-rate = sum × 365/18), never in monthly.
 - "World" = sum of the countries in the export (up to 112; Shonen Jump has only 39).
-- Regions (world / us / tier1) are defined once in `data/catalog/regions.json` and used by the pipeline,
-  metrics and MCP server; Tier-1 = 20 countries (list in that file, user may edit it).
+- Regions (world / us / tier1 / asia) are defined once in `data/catalog/regions.json` and used by the pipeline,
+  metrics and MCP server; Tier-1 = 20 countries, Asia = 21 countries (East/SE/South/Central, no Middle East;
+  added 2026-10-18). Lists live in that file, user may edit them. A new region also needs `Region` in
+  `web/lib/types.ts`, `REGION_LABEL` in `web/lib/labels.ts` and an option in `Nav.tsx`.
 - Revenue can be $0 for years where Sensor Tower has downloads but no revenue estimate
   (WEBTOON before 2019) — that is missing data, not zero revenue; use the first month with revenue.
 - Months after the cutoff (last complete month) are dropped; `partial` marks incomplete months.

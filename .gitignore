@@ -9,6 +9,8 @@ data/catalog/03 Competitors*.csv
 data/catalog/cache/
 data/processed/**
 !data/processed/.gitkeep
+# One-off exports (handoff tables, PDF data, chart PNGs)
+/out/
 # Data copy staged for the Vercel MCP deploy (make mcp-deploy)
 mcp/data/
 .vercel/
